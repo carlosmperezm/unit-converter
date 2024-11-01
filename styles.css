@@ -1,0 +1,50 @@
+body {
+  font-family: fantasy;
+  max-width: 80%;
+  background-color: pink;
+  margin: 2em auto;
+
+}
+
+
+nav ul {
+  display: flex;
+  width: 100%;
+  background-color: black;
+  /* max-width: 400px; */
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+nav {
+  display: flex;
+  background-color: white;
+  justify-content: center;
+
+}
+
+li {
+  display: inline;
+  margin: 1em;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  background-color: azure;
+  align-items: center;
+
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: lightblue;
+  align-items: center;
+  margin: 2%;
+  width: 80%;
+}
+
+button {
+  margin: 2em auto;
+}
