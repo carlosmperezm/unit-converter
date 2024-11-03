@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-widht, initial-scale=1.0" />
+  <meta charset="utf-8" />
+
+  <title>Unit Converter</title>
+
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+</head>
+
+<body>
+  <h1>Unit Converter</h1>
+
+  <nav>
+    <ul>
+      <li><a href="{% url 'length' %}"> Length </a> </li>
+      <li><a href="{% url 'weight' %}"> Weigth </a> </li>
+      <li><a href="{% url 'temperature' %}"> Tempeture </a> </li>
+    </ul>
+  </nav>
+
+
+
+  <main>
+    {% block 'main' %}
+
+    {% endblock %}
+
+  </main>
+
+</body>
+
+</html>
