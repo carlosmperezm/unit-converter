@@ -3,19 +3,34 @@
     {% block 'main' %}
     <h2>Main Section</h2>
 
-    <form action="">
-      {{crsf_token}}
+    <form method='POST' action="{% url 'length' %}">
+      {% csrf_token %}
       <h6>Enter the length to convert</h6>
-      <input name="length-name">
+
+      <select name='convert_to'>
+      <option value='foot'>Foot</option>
+      <option value='meter'>Meter</option>
+      <option value='kilometer'>Kilometer</option>
+      <option value='mile'>Mile</option>
+      <option value='inch'>Inch</option>
+      <option value='centimeter'>Centimeter</option>
+      </select>
 
 
 
       <h6>Unit to Convert from</h6>
-      <input type="number" name="convert-from">
+      <select name='convert_from'>
+      <option value='foot'>Foot</option>
+      <option value='meter'>Meter</option>
+      <option value='kilometer'>Kilometer</option>
+      <option value='mile'>Mile</option>
+      <option value='inch'>Inch</option>
+      <option value='centimeter'>Centimeter</option>
+      </select>
 
 
       <h6>Unit to Convert to</h6>
-      <input type="number" name="convert-to">
+      <input type="number" name="number">
 
       <button type="submit">Convert</button>
     </form>
