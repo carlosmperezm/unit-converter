@@ -50,18 +50,19 @@ def weigth_converter(request):
 
     unit_classes: dict = UnitRegistry.get_unit_classes(convert_from)
 
-    number: IWeight = UnitFactory(param_number, unit_class).build(convert_from)
+    number: IWeight = UnitFactory(param_number, unit_classes).build(convert_from)
 
-    if convert_to == WeightUnit.GRAM:
-        number_result = number.gram()
-    elif convert_to == WeightUnit.KILOGRAM:
-        number_result = number.kilogram()
-    elif convert_to == WeightUnit.MILIGRAM:
-        number_result = number.miligram()
-    elif convert_to == WeightUnit.OUNCE:
-        number_result = number.ounce()
-    elif convert_to == WeightUnit.POUND:
-        number_result = number.pound()
+    conversion_map: dict[str, float] = {
+        WeightUnit.GRAM.value: number.gram,
+        WeightUnit.KILOGRAM.value: number.kilogram,
+        WeightUnit.MILIGRAM.value: number.miligram,
+        WeightUnit.OUNCE.value: number.ounce,
+        WeightUnit.POUND.value: number.pound,
+    }
+
+    number_result = conversion_map.get(convert_to)
+    if not number_result:
+        raise ValueError(f"Uknown unit: {convert_to}")
 
     context = {
         "convert_from": convert_from,
@@ -83,18 +84,18 @@ def lenght_converter(request):
 
     number: ILengthMeasure = UnitFactory(param_number, unit_classes).build(convert_from)
 
-    if convert_to == "mile":
-        number_result = number.mile
-    elif convert_to == "foot":
-        number_result = number.foot
-    elif convert_to == "meter":
-        number_result = number.meter
-    elif convert_to == "kilometer":
-        number_result = number.kilometer
-    elif convert_to == "centimeter":
-        number_result = number.centimeter
-    elif convert_to == "inch":
-        number_result = number.inch
+    conversion_map: dict[str, float] = {
+        LenghtUnit.FOOT.value: number.foot,
+        LenghtUnit.INCH.value: number.inch,
+        LenghtUnit.MILE.value: number.mile,
+        LenghtUnit.METER.value: number.meter,
+        LenghtUnit.KILOMETER.value: number.kilometer,
+        LenghtUnit.CENTIMETER.value: number.centimeter,
+    }
+
+    number_result = conversion_map.get(convert_to)
+    if not number_result:
+        raise ValueError(f"Uknown unit: {convert_to}")
 
     context = {
         "convert_from": convert_from,
