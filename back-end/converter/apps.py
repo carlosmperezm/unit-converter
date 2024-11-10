@@ -2,10 +2,11 @@ from django.apps import AppConfig
 
 from converter.UnitRegistry import UnitRegistry
 
-from converter.units import WeightUnit, LenghtUnit
+from converter.units import WeightUnit, LenghtUnit, TemperatureUnit
 
 from converter.models.Lengthmodels import Inch, Foot, Mile, Meter, Kilometer, Centimeter
 from converter.models.WeightModels import Ounce, Gram, Pound, Kilogram, Miligram
+from converter.models.TemperatureModels import Celsius, Fahrenheit, Kelvin
 
 
 class ConverterConfig(AppConfig):
@@ -27,3 +28,8 @@ class ConverterConfig(AppConfig):
         UnitRegistry.register(WeightUnit.POUND.value, Pound)
         UnitRegistry.register(WeightUnit.KILOGRAM.value, Kilogram)
         UnitRegistry.register(WeightUnit.MILIGRAM.value, Miligram)
+
+        # Temperature units registery
+        UnitRegistry.register(TemperatureUnit.CELSIUS.value, Celsius)
+        UnitRegistry.register(TemperatureUnit.FAHRENHEIT.value, Fahrenheit)
+        UnitRegistry.register(TemperatureUnit.KELVIN.value, Kelvin)

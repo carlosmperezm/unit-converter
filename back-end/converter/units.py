@@ -16,3 +16,9 @@ class WeightUnit(Enum):
     GRAM = "gram"
     KILOGRAM = "kilogram"
     MILIGRAM = "miligram"
+
+
+class TemperatureUnit(Enum):
+    CELSIUS = "celsius"
+    FAHRENHEIT = "fahrenheit"
+    KELVIN = "kelvin"
